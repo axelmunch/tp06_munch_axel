@@ -19,12 +19,18 @@ exports.get = (req, res) => {
 };
 
 exports.search = (req, res) => {
+  let searchText = req.query.q ?? "";
+
+  if (searchText == "") {
+    return this.get(req, res);
+  }
+
   res.setHeader("Content-Type", "application/json");
 
   let search = catalogue.filter(
     (item) =>
-      item.titre.toLowerCase().includes((req.query.q ?? "").toLowerCase()) ||
-      item.prix.toString().includes(req.query.q ?? "")
+      item.titre.toLowerCase().includes(searchText.toLowerCase()) ||
+      item.prix.toString().includes(searchText)
   );
   res.send(search);
 };
