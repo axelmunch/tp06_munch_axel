@@ -21,12 +21,10 @@ exports.get = (req, res) => {
 exports.search = (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
-  // Articles recommandés
-  res.send(
-    catalogue.filter(
-      (item) =>
-        item.titre.toLowerCase().includes(req.query.q.toLowerCase()) ||
-        item.prix.toString().includes(req.query.q)
-    )
+  let search = catalogue.filter(
+    (item) =>
+      item.titre.toLowerCase().includes((req.query.q ?? "").toLowerCase()) ||
+      item.prix.toString().includes(req.query.q ?? "")
   );
+  res.send(search);
 };
