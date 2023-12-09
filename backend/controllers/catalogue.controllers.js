@@ -19,9 +19,9 @@ exports.get = (req, res) => {
 };
 
 exports.search = (req, res) => {
-  let searchText = req.body.q ?? "";
+  let searchText = req.query.q ?? "";
   searchText = searchText.toLowerCase();
-  let priceInf = req.body.priceInf ?? 0;
+  let priceInf = req.query.priceInf ?? 0;
 
   if (searchText == "" && priceInf == 0) {
     return this.get(req, res);
