@@ -19,18 +19,25 @@ exports.get = (req, res) => {
 };
 
 exports.search = (req, res) => {
-  let searchText = req.query.q ?? "";
+  let searchText = req.body.q ?? "";
+  searchText = searchText.toLowerCase();
+  let priceInf = req.body.priceInf ?? 0;
 
-  if (searchText == "") {
+  if (searchText == "" && priceInf == 0) {
     return this.get(req, res);
   }
 
   res.setHeader("Content-Type", "application/json");
 
+  // Filtrer
   let search = catalogue.filter(
     (item) =>
-      item.titre.toLowerCase().includes(searchText.toLowerCase()) ||
-      item.prix.toString().includes(searchText)
+      item.name.toLowerCase().includes(searchText) ||
+      item.price.toString().includes(searchText)
   );
+  if (priceInf != 0) {
+    search = search.filter((item) => item.price <= priceInf);
+  }
+
   res.send(search);
 };
