@@ -30,7 +30,7 @@ export class SearchService {
   constructor(private http: HttpClient) {
     this.searchElements$
       .pipe(
-        debounceTime(1000), // Millisecondes
+        debounceTime(500), // Millisecondes
         distinctUntilChanged(), // Seulement au changement
         takeUntil(this.destroy$) // Arrêter l'observation à la destruction
       )
