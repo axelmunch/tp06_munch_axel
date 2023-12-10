@@ -18,8 +18,10 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ApiHttpInterceptor } from "./http-interceptor";
 
 const appRoutes: Routes = [
+  { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "cart", component: CartComponent },
+
   { path: "**", redirectTo: "/home", pathMatch: "full" },
 ];
 
