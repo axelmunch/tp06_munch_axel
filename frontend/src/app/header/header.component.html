@@ -1,0 +1,14 @@
+<h1>TP06</h1>
+<ul>
+  <li>
+    <a [routerLink]="['/home']" [routerLinkActive]="['is-active']">🏠</a>
+  </li>
+  <li>
+    <a [routerLink]="['/cart']" [routerLinkActive]="['is-active']"
+      >🛒
+      <div class="quantity" *ngIf="(nbProducts$ | async) > 0">
+        <span>{{ nbProducts$ | async }}</span>
+      </div>
+    </a>
+  </li>
+</ul>

@@ -1,0 +1,41 @@
+ul {
+  display: flex;
+  list-style-type: none;
+  gap: 2rem;
+  font-size: larger;
+}
+
+li {
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  position: relative;
+}
+
+a .quantity {
+  width: 1rem;
+  height: 1rem;
+  font-size: smaller;
+  position: absolute;
+  top: -20%;
+  left: 85%;
+  border-radius: 50%;
+  color: white;
+  background-color: red;
+}
+
+a .quantity span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+li:has(.is-active) {
+  background-color: #ddd;
+}

@@ -1,32 +1,29 @@
-<h1>Archi Web - Connexion backend</h1>
-
-<h2>Se connecter</h2>
-<label for="login">login : </label><input [(ngModel)]="login" /><br />
-<label for="password">password : </label
-><input [(ngModel)]="password" type="password" /><br />
-<br />
-<button (click)="connexion()">Connexion</button>
-
-<hr />
-<h2>Créer un compte</h2>
-<label for="nom">nom : </label><input [(ngModel)]="crNom" /><br />
-<label for="prenom">prenom : </label><input [(ngModel)]="crPrenom" /><br />
-<label for="email">email : </label><input [(ngModel)]="crEmail" /><br />
-<label for="login">login : </label><input [(ngModel)]="crLogin" /><br />
-<label for="password">password : </label
-><input [(ngModel)]="crPassword" type="password" /><br />
-<br />
-<button (click)="creer()">Créer un compte</button>
-
-<hr />
-<div *ngIf="cnx">
-  Bonjour {{ nom }} - {{ prenom }}
-
-  <h2>Catalogue produits</h2>
-
-  <div *ngIf="produits$ | async as produits">
-    <div *ngFor="let p of produits">
-      <div>{{ p.ref }} - {{ p.titre }} - {{ p.prix }} €</div>
+<div *ngIf="cnx">✅ Connecté</div>
+<div *ngIf="!cnx">
+    <div class="compte">
+        <div>
+          <h2>Se connecter</h2>
+          <label for="login">Login : </label><input [(ngModel)]="login" /><br />
+          <label for="password">Mot de passe : </label
+          ><input [(ngModel)]="password" type="password" /><br />
+          <br />
+          <button (click)="connexion()">Connexion</button>
+        </div>
+        <div>
+          <h2>Créer un compte</h2>
+          <label for="prenom">Prénom : </label><input [(ngModel)]="crPrenom" /><br />
+          <label for="nom">Nom : </label><input [(ngModel)]="crNom" /><br />
+          <label for="email">Email : </label><input [(ngModel)]="crEmail" /><br />
+          <label for="login">Login : </label><input [(ngModel)]="crLogin" /><br />
+          <label for="password">Mot de passe : </label
+          ><input [(ngModel)]="crPassword" type="password" /><br />
+          <br />
+          <button (click)="creer()">Créer un compte</button>
+        </div>
     </div>
-  </div>
 </div>
+
+<hr />
+
+<app-header></app-header>
+<router-outlet></router-outlet>

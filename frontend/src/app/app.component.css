@@ -1,3 +1,19 @@
 p {
   font-family: Lato;
 }
+
+.compte {
+  display: flex;
+}
+
+.compte > div {
+  flex: 1;
+  margin: 1rem;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+hr {
+  border-top: 1px solid #ccc;
+}

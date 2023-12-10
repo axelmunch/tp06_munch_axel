@@ -1,0 +1,49 @@
+.searchBarContainer {
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.searchBar {
+  display: flex;
+  width: max-content;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.searchBar input {
+  margin: 0.25rem;
+}
+
+.searchBar button {
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+}
+
+.searchBar input,
+.searchBar button {
+  background-color: white;
+  border: none !important;
+}
+
+.priceSelect {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.priceSelect label:first-child {
+  margin-left: 0.4rem;
+}
+
+.priceSelect label:last-child {
+  margin-right: 0.4rem;
+}
+
+.priceSelect input {
+  border: 1px solid #ccc;
+  width: 3.5rem;
+}

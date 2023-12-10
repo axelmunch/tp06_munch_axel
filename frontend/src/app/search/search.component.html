@@ -1,0 +1,22 @@
+<div class="searchBarContainer">
+  <div class="searchBar">
+    <input
+      type="text"
+      [(ngModel)]="search"
+      (ngModelChange)="startSearch()"
+      placeholder="Search..."
+    />
+    <div class="priceSelect">
+      <label><</label>
+      <input
+        type="number"
+        [(ngModel)]="price"
+        (ngModelChange)="startSearch()"
+        step="0.5"
+        min="0"
+      />
+      <label>€</label>
+    </div>
+    <button (click)="reset()">X</button>
+  </div>
+</div>

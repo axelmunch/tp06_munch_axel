@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Observable } from "rxjs";
 import { Client } from "./models/client";
-import { Produit } from "./models/produit";
 import { environment } from "../environments/environment";
 
 @Injectable()
@@ -54,9 +53,5 @@ export class ApiService {
       data,
       httpOptions
     );
-  }
-
-  public getCalague(): Observable<Produit[]> {
-    return this.http.get<Produit[]>(environment.backendCatalogue);
   }
 }

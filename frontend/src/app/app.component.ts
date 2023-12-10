@@ -1,23 +1,26 @@
-import { Component } from '@angular/core';
-import { ApiService } from './api.service';
-import { Observable } from 'rxjs';
-import { Produit } from './models/produit';
+import { Component } from "@angular/core";
+import { Observable } from "rxjs";
+import { Product } from "./models/product";
+import { ApiService } from "./api.service";
+import { SearchService } from "./search-service.service";
 
 @Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  name = 'Angular';
-  login: string = '';
-  password: string = '';
+  name = "Angular";
+  login: string = "";
+  password: string = "";
 
-  nom: string = '';
-  prenom: string = '';
+  nom: string = "";
+  prenom: string = "";
   cnx: boolean = false;
-  produits$: Observable<Array<Produit>>;
-  constructor(private apiService: ApiService) {
+  constructor(
+    private apiService: ApiService,
+    private searchService: SearchService
+  ) {
     this.getCatalogue();
   }
   connexion() {
@@ -25,15 +28,15 @@ export class AppComponent {
       this.nom = c.nom;
       this.prenom = c.prenom;
       this.cnx = true;
+      this.getCatalogue();
     });
-    // this.getCatalogue();
   }
 
-  crNom: string = '';
-  crPrenom: string = '';
-  crEmail: string = '';
-  crLogin: string = '';
-  crPassword: string = '';
+  crNom: string = "";
+  crPrenom: string = "";
+  crEmail: string = "";
+  crLogin: string = "";
+  crPassword: string = "";
 
   creer() {
     this.apiService
@@ -50,6 +53,6 @@ export class AppComponent {
   }
 
   getCatalogue() {
-    this.produits$ = this.apiService.getCalague();
+    this.searchService.setSearchParams("", null);
   }
 }
