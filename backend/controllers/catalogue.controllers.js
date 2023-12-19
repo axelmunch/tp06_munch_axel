@@ -11,6 +11,10 @@ const catalogue = [
   { ref: "J", name: "Shower gel", price: 12.5 },
 ];
 
+// function getRecommended() {
+//   return catalogue;
+// }
+
 exports.get = (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
@@ -23,11 +27,12 @@ exports.search = (req, res) => {
   searchText = searchText.toLowerCase();
   let priceInf = req.query.priceInf ?? 0;
 
-  if (searchText == "" && priceInf == 0) {
-    return this.get(req, res);
-  }
-
   res.setHeader("Content-Type", "application/json");
+
+  if (searchText == "" && priceInf == 0) {
+    res.send(catalogue);
+    return;
+  }
 
   // Filtrer
   let search = catalogue.filter(

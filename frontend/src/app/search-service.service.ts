@@ -13,6 +13,7 @@ import {
 } from "rxjs";
 import { environment } from "src/environments/environment";
 import { HttpClient } from "@angular/common/http";
+import { mergeMap } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -32,12 +33,11 @@ export class SearchService {
       .pipe(
         debounceTime(500), // Millisecondes
         distinctUntilChanged(), // Seulement au changement
+        mergeMap(([search, price]) => this.searchProducts(search, price)), // MergeMap to flatten the inner observable
         takeUntil(this.destroy$) // Arrêter l'observation à la destruction
       )
-      .subscribe(([search, price]) => {
-        this.searchProducts(search, price).subscribe((products) => {
-          this.productsSubject.next(products);
-        });
+      .subscribe((products) => {
+        this.productsSubject.next(products);
       });
   }
 
